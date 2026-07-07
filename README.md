@@ -31,9 +31,10 @@ screenshot: hyprshot hyprpicker <br>
 auido: wireplumber <br>
 brightness: brightnessctl <br>
 multimedia: playerctl <br>
-fonts: noto-fonts <br></p>
+fonts: noto-fonts <br>
+authentication agent: polkit-kde-agent<br></p>
 
 command with everything: 
-<code>sudo pacman -S hyprland alacritty dolphin fuzzel firefox wireplumber brightnessctl playerctl noto-fonts hyprshot hyprpicker</code><br>
+<code>sudo pacman -S hyprland alacritty dolphin fuzzel firefox wireplumber brightnessctl playerctl noto-fonts hyprshot hyprpicker polkit-kde-agent</code><br>
 
 also i use qt6ct-kde from AUR so my kde plasma desktop doesn't look horrible with hyprland installed
