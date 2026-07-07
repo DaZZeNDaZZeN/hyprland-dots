@@ -1,7 +1,6 @@
 # hyprland-dots
 
-i vibe coded most of quickshell config
-hyprland config were written by myself
+i vibe coded most of quickshell config, hyprland config were written by myself
 
 ### keybindings:
 <p>
