@@ -34,4 +34,6 @@ multimedia: playerctl <br>
 fonts: noto-fonts <br></p>
 
 command with everything: 
-<code>sudo pacman -S hyprland alacritty dolphin fuzzel firefox wireplumber brightnessctl playerctl noto-fonts hyprshot hyprpicker</code>
+<code>sudo pacman -S hyprland alacritty dolphin fuzzel firefox wireplumber brightnessctl playerctl noto-fonts hyprshot hyprpicker</code><br>
+
+also i use qt6ct-kde from AUR so my kde plasma desktop doesn't look horrible with hyprland installed
