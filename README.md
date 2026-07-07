@@ -3,7 +3,7 @@
 i vibe coded most of quickshell config
 hyprland config were written by myself
 
-#### keybindings:
+### keybindings:
 <p>
 Exit hyprland: SUPER + M <br> 
 Close window: SUPER + Q <br>
@@ -20,17 +20,19 @@ Make window float: SUPER + B <br>
 Screenshot: SUPER + SHIFT + S <br></p>
 
 
-#### required packages for arch linux:
+### required packages for arch linux:
 
-wm: hyprland
-terminal: alacritty
-file manager: dolphin
-browser: firefox
-app launcher: fuzzel
-screenshot: hyprshot hyprpicker
-auido: wireplumber
-brightness: brightnessctl
-multimedia: playerctl
-fonts: noto-fonts
+<p>
+wm: hyprland <br>
+terminal: alacritty <br>
+file manager: dolphin <br>
+browser: firefox <br>
+app launcher: fuzzel <br>
+screenshot: hyprshot hyprpicker <br>
+auido: wireplumber <br>
+brightness: brightnessctl <br>
+multimedia: playerctl <br>
+fonts: noto-fonts <br></p>
 
-command with everything: sudo pacman -S hyprland alacritty dolphin fuzzel firefox wireplumber brightnessctl playerctl noto-fonts hyprshot hyprpicker
+command with everything: 
+<code>sudo pacman -S hyprland alacritty dolphin fuzzel firefox wireplumber brightnessctl playerctl noto-fonts hyprshot hyprpicker</code>
