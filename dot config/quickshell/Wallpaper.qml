@@ -9,6 +9,8 @@ Scope {
 
     property string wallpaperSource: Qt.resolvedUrl("file:///home/ren/Wallpaper/1363707.png") 
 
+    property var palette
+
     IpcHandler {
         target: "wallpaper"
 
@@ -39,7 +41,7 @@ Scope {
             margins { top: -topPanelHeightWithMargins }
             exclusionMode: ExclusionMode.None
             focusable: false
-            color: "#1a1a1a" // Matched to background color
+            color: wallpaperModule.palette.bg
 
             Component.onCompleted: {
                 if (this.WlrLayershell != null) {

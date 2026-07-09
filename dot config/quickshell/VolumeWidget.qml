@@ -204,7 +204,7 @@ Item {
                         implicitWidth: 14
                         implicitHeight: 14
                         radius: 7
-                        color: verticalSlider.pressed ? volumeControl.palette.text : "#cccccc"
+                        color: verticalSlider.pressed ? volumeControl.palette.text : volumeControl.palette.darkerText
                         border.color: volumeControl.palette.main
                         border.width: verticalSlider.hovered ? 2 : 0
 

@@ -1,6 +1,7 @@
 //@ pragma UseQApplication
 
 import Quickshell
+import Quickshell.Wayland
 import Quickshell.Hyprland
 import Quickshell.Services.SystemTray
 import QtQuick
@@ -12,11 +13,14 @@ ShellRoot {
     id: root
 
     // Centralized 5-Color Palette Configuration
+
     property var palette: {
         "main": "#9044FF",
         "accent": "#D55672",
         "text": "#FFFFFF",
-        "bg": "#1a1a1a",
+        "darkerText": "#999999",
+        "bg": "#1A1A1A", 
+        "darkerkBg": "#0F0F0F",
         "secondaryBg": "#606375"
     }
 
@@ -29,12 +33,37 @@ ShellRoot {
 
     Wallpaper {
         topPanelHeightWithMargins: panelWindow.heightWithMargin
+        palette: root.palette
+    }
+
+    // --- Clipboard Manager Overlay window ---
+    ClipboardManager {
+        id: clipboardManager
+        palette: root.palette
+        topPanelHeightWithMargins: panelWindow.heightWithMargin
+    }
+
+    // Listen for SUPER+V global shortcut via Hyprland protocol
+    GlobalShortcut {
+        name: "clipboard"
+        onPressed: {
+            clipboardManager.toggle();
+        }
+    }
+
+    // Start background watcher daemon on launch
+    Process {
+        id: clipboardWatcher
+        command: ["wl-paste", "--watch", "python3", Quickshell.shellPath("clip_daemon.py"), "record"]
+        running: true
     }
 
     PanelWindow {
         id: panelWindow
         surfaceFormat.opaque: false
         color: "#00000000"
+        WlrLayershell.layer: WlrLayer.Top
+        WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
         anchors {
             left: true
             top: true

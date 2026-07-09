@@ -181,7 +181,7 @@ Item {
                         implicitWidth: 14
                         implicitHeight: 14
                         radius: 7
-                        color: brightnessSlider.pressed ? brightnessControl.palette.text : "#cccccc"
+                        color: brightnessSlider.pressed ? brightnessControl.palette.text : brightnessControl.palette.darkerText
                         border.color: brightnessControl.palette.main
                         border.width: brightnessSlider.hovered ? 2 : 0
 
