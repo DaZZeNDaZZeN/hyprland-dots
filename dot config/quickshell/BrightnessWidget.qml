@@ -9,8 +9,8 @@ Item {
     width: brightnessButton.width
     height: 30
 
-    // Required reference to anchor the dropdown correctly
     required property var panelWindow
+    property var palette
 
     property int currentBrightness: 50
     property int scrollStep: 5
@@ -50,8 +50,8 @@ Item {
         width: 68
         height: 28
         radius: 14
-        color: brightnessButtonMouseArea.containsMouse ? "#2a2a2a" : "#1a1a1a"
-        border.color: brightnessPopup.visible ? "#9044FF" : (brightnessButtonMouseArea.containsMouse ? "#ffffff" : "#444444")
+        color: brightnessButtonMouseArea.containsMouse ? brightnessControl.palette.secondaryBg : brightnessControl.palette.bg
+        border.color: brightnessPopup.visible ? brightnessControl.palette.main : (brightnessButtonMouseArea.containsMouse ? brightnessControl.palette.text : brightnessControl.palette.secondaryBg)
         border.width: brightnessPopup.visible ? 2.0 : 1.2
 
         Behavior on color {
@@ -78,8 +78,8 @@ Item {
                 smooth: true
                 anchors.verticalCenter: parent.verticalCenter
                 source: {
-                    let strokeColor = "%239044FF";
-                    let hoverColor = "%23ffffff";
+                    let strokeColor = encodeURIComponent(brightnessControl.palette.main);
+                    let hoverColor = encodeURIComponent(brightnessControl.palette.text);
                     let activeColor = brightnessButtonMouseArea.containsMouse ? hoverColor : strokeColor;
                     let rayLength = 1.2 + (brightnessControl.currentBrightness / 100.0) * 3.8;
                     return "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + activeColor + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4'/><g transform='rotate(0 12 12)'><line x1='12' y1='6.5' x2='12' y2='" + (6.5 - rayLength) + "' /></g><g transform='rotate(45 12 12)'><line x1='12' y1='6.5' x2='12' y2='" + (6.5 - rayLength) + "' /></g><g transform='rotate(90 12 12)'><line x1='12' y1='6.5' x2='12' y2='" + (6.5 - rayLength) + "' /></g><g transform='rotate(135 12 12)'><line x1='12' y1='6.5' x2='12' y2='" + (6.5 - rayLength) + "' /></g><g transform='rotate(180 12 12)'><line x1='12' y1='6.5' x2='12' y2='" + (6.5 - rayLength) + "' /></g><g transform='rotate(225 12 12)'><line x1='12' y1='6.5' x2='12' y2='" + (6.5 - rayLength) + "' /></g><g transform='rotate(270 12 12)'><line x1='12' y1='6.5' x2='12' y2='" + (6.5 - rayLength) + "' /></g><g transform='rotate(315 12 12)'><line x1='12' y1='6.5' x2='12' y2='" + (6.5 - rayLength) + "' /></g></svg>";
@@ -88,7 +88,7 @@ Item {
 
             Text {
                 text: brightnessControl.currentBrightness + "%"
-                color: "white"
+                color: brightnessControl.palette.text
                 font.pixelSize: 11
                 font.bold: true
                 font.family: "Noto Sans"
@@ -138,8 +138,8 @@ Item {
 
         Rectangle {
             anchors.fill: parent
-            color: "#16161a"
-            border.color: "#9044FF"
+            color: brightnessControl.palette.bg
+            border.color: brightnessControl.palette.main
             border.width: 1.5
             radius: 12
 
@@ -164,13 +164,13 @@ Item {
                         x: brightnessSlider.leftPadding + brightnessSlider.availableWidth / 2 - width / 2
                         y: brightnessSlider.topPadding
                         radius: 2.5
-                        color: "#2a2a35"
+                        color: brightnessControl.palette.secondaryBg
 
                         Rectangle {
                             width: parent.width
                             height: (1.0 - brightnessSlider.visualPosition) * parent.height
                             y: parent.height - height
-                            color: "#9044FF"
+                            color: brightnessControl.palette.main
                             radius: 2.5
                         }
                     }
@@ -181,8 +181,8 @@ Item {
                         implicitWidth: 14
                         implicitHeight: 14
                         radius: 7
-                        color: brightnessSlider.pressed ? "#ffffff" : "#cccccc"
-                        border.color: "#9044FF"
+                        color: brightnessSlider.pressed ? brightnessControl.palette.text : "#cccccc"
+                        border.color: brightnessControl.palette.main
                         border.width: brightnessSlider.hovered ? 2 : 0
 
                         Behavior on border.width {
@@ -204,7 +204,7 @@ Item {
 
                 Text {
                     text: brightnessControl.currentBrightness + "%"
-                    color: "white"
+                    color: brightnessControl.palette.text
                     font.pixelSize: 11
                     font.bold: true
                     font.family: "Noto Sans"

@@ -11,8 +11,15 @@ import Quickshell.Io
 ShellRoot {
     id: root
 
-    property color bgColor: '#1a1a1a'
-    property color bgBorderColor: "#9044FF"
+    // Centralized 5-Color Palette Configuration
+    property var palette: {
+        "main": "#9044FF",
+        "accent": "#D55672",
+        "text": "#FFFFFF",
+        "bg": "#1a1a1a",
+        "secondaryBg": "#606375"
+    }
+
     property real bgBorderWidth: 3.0
 
     SystemClock {
@@ -50,8 +57,8 @@ ShellRoot {
                 left: bgRect.left
                 leftMargin: -20
             }
-            color: bgColor
-            border.color: bgBorderColor
+            color: root.palette.bg
+            border.color: root.palette.main
             border.width: bgBorderWidth
         }
         Rectangle {
@@ -62,23 +69,23 @@ ShellRoot {
                 left: bgRect.right
                 leftMargin: -20
             }
-            color: bgColor
-            border.color: bgBorderColor
+            color: root.palette.bg
+            border.color: root.palette.main
             border.width: bgBorderWidth
         }
         Rectangle {
             id: bgRect
-            color: bgColor
+            color: root.palette.bg
             anchors.fill: parent
             anchors {
                 leftMargin: 40
                 rightMargin: 40
             }
-            border.color: bgBorderColor
+            border.color: root.palette.main
             border.width: bgBorderWidth
         }
         Rectangle { // left compensation
-            color: bgColor
+            color: root.palette.bg
             width: 40
             height: 40 - bgBorderWidth * 2
             anchors {
@@ -87,7 +94,7 @@ ShellRoot {
             }
         }
         Rectangle { // right compensation
-            color: bgColor
+            color: root.palette.bg
             width: 40
             height: 40 - bgBorderWidth * 2
             anchors {
@@ -111,6 +118,7 @@ ShellRoot {
 
             BrightnessWidget {
                 panelWindow: panelWindow
+                palette: root.palette
             }
         }
 
@@ -122,37 +130,62 @@ ShellRoot {
             Text {
                 id: datetimeText
                 font.pixelSize: 18
-                color: "white"
+                color: root.palette.text
                 anchors.verticalCenter: parent.verticalCenter
                 text: Qt.formatDateTime(clock.date, "hh:mm:ss | MM.dd.yyyy")
             }
 
             Row {
-                id: workspaceButtons
                 spacing: 10
                 anchors.verticalCenter: parent.verticalCenter
 
-                Repeater {
-                    model: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-                    Item {
-                        width: 25
-                        height: 25
-                        Rectangle {
-                            id: customButton
-                            anchors.fill: parent
-                            color: Hyprland.focusedWorkspace.id == parseInt(modelData) ? "#4A90E2" : "#444444"
-                            radius: width / 2
-                            Text {
-                                anchors.centerIn: parent
-                                text: modelData
-                                font.pixelSize: 12
-                                color: "white"
-                            }
+                MouseArea {
+                    id: workspaceScrollArea
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: workspaceButtons.width
+                    height: workspaceButtons.height
+
+                    onWheel: wheel => {
+                        var currentWs = Hyprland.focusedWorkspace ? Hyprland.focusedWorkspace.id : 1;
+                        if (wheel.angleDelta.y < 0) {
+                            var nextWs = currentWs + 1;
+                            Hyprland.dispatch("hl.dsp.focus({ workspace = " + nextWs + " })");
+                        } else if (wheel.angleDelta.y > 0) {
+                            var prevWs = currentWs - 1;
+                            Hyprland.dispatch("hl.dsp.focus({ workspace = " + prevWs + " })");
                         }
-                        MouseArea {
-                            anchors.fill: parent
-                            cursorShape: Qt.PointingHandCursor
-                            onClicked: Hyprland.dispatch("hl.dsp.focus({ workspace = " + modelData + " })")
+                        wheel.accepted = true;
+                    }
+
+                    Row {
+                        id: workspaceButtons
+                        spacing: 10
+
+                        Repeater {
+                            model: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+                            Item {
+                                width: 25
+                                height: 25
+                                Rectangle {
+                                    id: customButton
+                                    anchors.fill: parent
+                                    color: Hyprland.focusedWorkspace.id == parseInt(modelData) ? root.palette.main : root.palette.secondaryBg
+                                    radius: width / 2
+                                    Text {
+                                        anchors.centerIn: parent
+                                        text: modelData
+                                        font.pixelSize: 14
+                                        color: root.palette.text
+                                    }
+                                }
+                                MouseArea {
+                                    anchors.fill: parent
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: {
+                                        Hyprland.dispatch("hl.dsp.focus({ workspace = " + modelData + " })");
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -203,10 +236,12 @@ ShellRoot {
 
             BatteryWidget {
                 anchors.verticalCenter: parent.verticalCenter
+                palette: root.palette
             }
 
             VolumeWidget {
                 panelWindow: panelWindow
+                palette: root.palette
             }
         }
     }

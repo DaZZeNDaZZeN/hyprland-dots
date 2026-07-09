@@ -5,6 +5,7 @@ Row {
     id: batteryWidget
     spacing: 8
 
+    property var palette
     property int capacity: 100
     property bool isCharging: false
 
@@ -60,7 +61,7 @@ Row {
             width: 28
             height: 16
             color: "transparent"
-            border.color: "white"
+            border.color: batteryWidget.palette.text
             border.width: 1.5
             radius: 3
             anchors.left: parent.left
@@ -93,7 +94,7 @@ Row {
         Rectangle {
             width: 2
             height: 6
-            color: "white"
+            color: batteryWidget.palette.text
             radius: 1
             anchors.left: batteryOuter.right
             anchors.leftMargin: 1
@@ -107,7 +108,7 @@ Row {
             font.pixelSize: 12
             color: "#f1c40f"
             style: Text.Outline
-            styleColor: "#111111"
+            styleColor: batteryWidget.palette.bg
             anchors.centerIn: batteryOuter
         }
     }
@@ -116,7 +117,7 @@ Row {
         text: batteryWidget.capacity + "%"
         font.pixelSize: 13
         font.bold: true
-        color: "white"
+        color: batteryWidget.palette.text
         anchors.verticalCenter: parent.verticalCenter
     }
 }

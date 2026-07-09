@@ -10,6 +10,7 @@ Item {
     height: 30
 
     required property var panelWindow
+    property var palette
 
     property int currentVolume: 50
     property bool isMuted: false
@@ -62,8 +63,8 @@ Item {
         width: 68
         height: 28
         radius: 14
-        color: soundButtonMouseArea.containsMouse ? "#2a2a2a" : "#1a1a1a"
-        border.color: volumePopup.visible ? "#9044FF" : (soundButtonMouseArea.containsMouse ? "#ffffff" : "#444444")
+        color: soundButtonMouseArea.containsMouse ? volumeControl.palette.secondaryBg : volumeControl.palette.bg
+        border.color: volumePopup.visible ? volumeControl.palette.main : (soundButtonMouseArea.containsMouse ? volumeControl.palette.text : volumeControl.palette.secondaryBg)
         border.width: volumePopup.visible ? 2.0 : 1.2
 
         Behavior on color {
@@ -91,8 +92,8 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
 
                 source: {
-                    let strokeColor = volumeControl.isMuted ? "%23FF4D4D" : "%239044FF";
-                    let hoverColor = "%23ffffff";
+                    let strokeColor = volumeControl.isMuted ? encodeURIComponent(volumeControl.palette.accent) : encodeURIComponent(volumeControl.palette.main);
+                    let hoverColor = encodeURIComponent(volumeControl.palette.text);
                     let activeColor = soundButtonMouseArea.containsMouse ? hoverColor : strokeColor;
                     if (volumeControl.isMuted || volumeControl.currentVolume === 0) {
                         return "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + strokeColor + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6'/></svg>";
@@ -106,7 +107,7 @@ Item {
 
             Text {
                 text: volumeControl.isMuted ? "MUT" : volumeControl.currentVolume + "%"
-                color: volumeControl.isMuted ? "#FF4D4D" : "white"
+                color: volumeControl.isMuted ? volumeControl.palette.accent : volumeControl.palette.text
                 font.pixelSize: 11
                 font.bold: true
                 font.family: "Noto Sans"
@@ -160,8 +161,8 @@ Item {
 
         Rectangle {
             anchors.fill: parent
-            color: "#16161a"
-            border.color: "#9044FF"
+            color: volumeControl.palette.bg
+            border.color: volumeControl.palette.main
             border.width: 1.5
             radius: 12
 
@@ -186,13 +187,13 @@ Item {
                         x: verticalSlider.leftPadding + verticalSlider.availableWidth / 2 - width / 2
                         y: verticalSlider.topPadding
                         radius: 2.5
-                        color: "#2a2a35"
+                        color: volumeControl.palette.secondaryBg
 
                         Rectangle {
                             width: parent.width
                             height: (1.0 - verticalSlider.visualPosition) * parent.height
                             y: parent.height - height
-                            color: "#9044FF"
+                            color: volumeControl.palette.main
                             radius: 2.5
                         }
                     }
@@ -203,8 +204,8 @@ Item {
                         implicitWidth: 14
                         implicitHeight: 14
                         radius: 7
-                        color: verticalSlider.pressed ? "#ffffff" : "#cccccc"
-                        border.color: "#9044FF"
+                        color: verticalSlider.pressed ? volumeControl.palette.text : "#cccccc"
+                        border.color: volumeControl.palette.main
                         border.width: verticalSlider.hovered ? 2 : 0
 
                         Behavior on border.width {
@@ -226,7 +227,7 @@ Item {
 
                 Text {
                     text: volumeControl.isMuted ? "MUTED" : volumeControl.currentVolume + "%"
-                    color: volumeControl.isMuted ? "#FF4D4D" : "white"
+                    color: volumeControl.isMuted ? volumeControl.palette.accent : volumeControl.palette.text
                     font.pixelSize: 11
                     font.bold: true
                     font.family: "Noto Sans"
