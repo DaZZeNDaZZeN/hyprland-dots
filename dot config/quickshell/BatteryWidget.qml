@@ -108,7 +108,7 @@ Row {
             font.pixelSize: 12
             color: "#f1c40f"
             style: Text.Outline
-            styleColor: batteryWidget.palette.bg
+            styleColor: batteryWidget.palette.surface_container
             anchors.centerIn: batteryOuter
         }
     }

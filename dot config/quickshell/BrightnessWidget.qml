@@ -50,9 +50,9 @@ Item {
         width: 68
         height: 28
         radius: 14
-        color: brightnessButtonMouseArea.containsMouse ? brightnessControl.palette.secondaryBg : brightnessControl.palette.bg
-        border.color: brightnessPopup.visible ? brightnessControl.palette.main : (brightnessButtonMouseArea.containsMouse ? brightnessControl.palette.text : brightnessControl.palette.secondaryBg)
-        border.width: brightnessPopup.visible ? 2.0 : 1.2
+        color: brightnessButtonMouseArea.containsMouse ? brightnessControl.palette.surface_container_low : brightnessControl.palette.surface_container
+        border.color: brightnessPopup.visible ? brightnessControl.palette.primary : (brightnessButtonMouseArea.containsMouse ? brightnessControl.palette.text : brightnessControl.palette.tertiary)
+        border.width: brightnessPopup.visible ? 2.0 : 1.0
 
         Behavior on color {
             ColorAnimation {
@@ -78,7 +78,7 @@ Item {
                 smooth: true
                 anchors.verticalCenter: parent.verticalCenter
                 source: {
-                    let strokeColor = encodeURIComponent(brightnessControl.palette.main);
+                    let strokeColor = encodeURIComponent(brightnessControl.palette.primary);
                     let hoverColor = encodeURIComponent(brightnessControl.palette.text);
                     let activeColor = brightnessButtonMouseArea.containsMouse ? hoverColor : strokeColor;
                     let rayLength = 1.2 + (brightnessControl.currentBrightness / 100.0) * 3.8;
@@ -138,8 +138,8 @@ Item {
 
         Rectangle {
             anchors.fill: parent
-            color: brightnessControl.palette.bg
-            border.color: brightnessControl.palette.main
+            color: brightnessControl.palette.surface_container_low
+            border.color: brightnessControl.palette.primary
             border.width: 1.5
             radius: 12
 
@@ -164,13 +164,13 @@ Item {
                         x: brightnessSlider.leftPadding + brightnessSlider.availableWidth / 2 - width / 2
                         y: brightnessSlider.topPadding
                         radius: 2.5
-                        color: brightnessControl.palette.secondaryBg
+                        color: brightnessControl.palette.surface_container_low
 
                         Rectangle {
                             width: parent.width
                             height: (1.0 - brightnessSlider.visualPosition) * parent.height
                             y: parent.height - height
-                            color: brightnessControl.palette.main
+                            color: brightnessControl.palette.primary
                             radius: 2.5
                         }
                     }
@@ -182,7 +182,7 @@ Item {
                         implicitHeight: 14
                         radius: 7
                         color: brightnessSlider.pressed ? brightnessControl.palette.text : brightnessControl.palette.darkerText
-                        border.color: brightnessControl.palette.main
+                        border.color: brightnessControl.palette.primary
                         border.width: brightnessSlider.hovered ? 2 : 0
 
                         Behavior on border.width {

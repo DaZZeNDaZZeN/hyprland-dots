@@ -12,17 +12,11 @@ import Quickshell.Io
 ShellRoot {
     id: root
 
-    // Centralized 5-Color Palette Configuration
-
-    property var palette: {
-        "main": "#9044FF",
-        "accent": "#D55672",
-        "text": "#FFFFFF",
-        "darkerText": "#999999",
-        "bg": "#1A1A1A", 
-        "darkerkBg": "#0F0F0F",
-        "secondaryBg": "#606375"
+    // Instantiate dynamic colors and map them to root.palette
+    Colors {
+        id: colors
     }
+    property var palette: colors
 
     property real bgBorderWidth: 3.0
 
@@ -86,8 +80,8 @@ ShellRoot {
                 left: bgRect.left
                 leftMargin: -20
             }
-            color: root.palette.bg
-            border.color: root.palette.main
+            color: root.palette.surface_container
+            border.color: root.palette.primary
             border.width: bgBorderWidth
         }
         Rectangle {
@@ -98,23 +92,23 @@ ShellRoot {
                 left: bgRect.right
                 leftMargin: -20
             }
-            color: root.palette.bg
-            border.color: root.palette.main
+            color: root.palette.surface_container
+            border.color: root.palette.primary
             border.width: bgBorderWidth
         }
         Rectangle {
             id: bgRect
-            color: root.palette.bg
+            color: root.palette.surface_container
             anchors.fill: parent
             anchors {
                 leftMargin: 40
                 rightMargin: 40
             }
-            border.color: root.palette.main
+            border.color: root.palette.primary
             border.width: bgBorderWidth
         }
         Rectangle { // left compensation
-            color: root.palette.bg
+            color: root.palette.surface_container
             width: 40
             height: 40 - bgBorderWidth * 2
             anchors {
@@ -123,7 +117,7 @@ ShellRoot {
             }
         }
         Rectangle { // right compensation
-            color: root.palette.bg
+            color: root.palette.surface_container
             width: 40
             height: 40 - bgBorderWidth * 2
             anchors {
@@ -198,7 +192,7 @@ ShellRoot {
                                 Rectangle {
                                     id: customButton
                                     anchors.fill: parent
-                                    color: Hyprland.focusedWorkspace.id == parseInt(modelData) ? root.palette.main : root.palette.secondaryBg
+                                    color: Hyprland.focusedWorkspace.id == parseInt(modelData) ? root.palette.primary : root.palette.primary_container
                                     radius: width / 2
                                     Text {
                                         anchors.centerIn: parent

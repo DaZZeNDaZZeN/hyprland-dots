@@ -26,7 +26,6 @@ PanelWindow {
     visible: false
     color: "#D9121212" // Translucent dark overlay backdrop
 
-    exclusionMode: Quickshell.ExclusionMode.Ignore
     WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.keyboardFocus: visible ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
@@ -101,9 +100,9 @@ PanelWindow {
         width: 600
         height: 650
         anchors.centerIn: parent
-        color: clipboardWindow.palette.bg
+        color: clipboardWindow.palette.surface_container
         radius: 16
-        border.color: clipboardWindow.palette.main
+        border.color: clipboardWindow.palette.primary
         border.width: 3
 
         // Stop mouse clicks from closing the card
@@ -127,7 +126,7 @@ PanelWindow {
                         text: "📋 CLIPBOARD HISTORY"
                         font.pixelSize: 20
                         font.bold: true
-                        color: clipboardWindow.palette.main
+                        color: clipboardWindow.palette.primary
                     }
                     Text {
                         text: "Select an item to copy back to the clipboard"
@@ -141,8 +140,8 @@ PanelWindow {
                     width: 100
                     height: 35
                     radius: 8
-                    color: clearMouse.containsMouse ? clipboardWindow.palette.accent : clipboardWindow.palette.secondaryBg
-                    border.color: clearMouse.containsMouse ? "transparent" : clipboardWindow.palette.accent
+                    color: clearMouse.containsMouse ? clipboardWindow.palette.secondary : clipboardWindow.palette.surface_container_low
+                    border.color: clearMouse.containsMouse ? "transparent" : clipboardWindow.palette.secondary
                     border.width: 1
                     Layout.alignment: Qt.AlignRight
 
@@ -167,9 +166,9 @@ PanelWindow {
             Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                color: clipboardWindow.palette.darkerkBg
+                color: clipboardWindow.palette.surface_container_lowest
                 radius: 12
-                border.color: clipboardWindow.palette.accent
+                border.color: clipboardWindow.palette.secondary
                 border.width: 1
                 clip: true
 
@@ -210,16 +209,16 @@ PanelWindow {
 
                     // --- List Delegate ---
                     delegate: Item {
-                        width: listView.width
-                        height: 75
+                        width: listView.width - 25
+                        height: 70
 
                         Rectangle {
                             id: itemCard
                             anchors.fill: parent
-                            anchors.margins: 2
+                            anchors.margins: 0
                             radius: 10
-                            color: index === listView.currentIndex ? clipboardWindow.palette.secondaryBg : clipboardWindow.palette.bg
-                            border.color: index === listView.currentIndex ? clipboardWindow.palette.main : "transparent"
+                            color: index === listView.currentIndex ? clipboardWindow.palette.surface_container_low : clipboardWindow.palette.surface_container
+                            border.color: index === listView.currentIndex ? clipboardWindow.palette.primary : "transparent"
                             border.width: 2
 
                             MouseArea {
@@ -231,7 +230,9 @@ PanelWindow {
 
                             RowLayout {
                                 anchors.fill: parent
-                                anchors.margins: 10
+                                anchors.margins: 0
+                                anchors.leftMargin: 10
+                                anchors.rightMargin: 10
                                 spacing: 12
 
                                 // Icon / Image Area
@@ -239,7 +240,7 @@ PanelWindow {
                                     width: 55
                                     height: 55
                                     radius: 6
-                                    color: clipboardWindow.palette.bg
+                                    color: clipboardWindow.palette.primary_container
                                     clip: true
                                     Layout.alignment: Qt.AlignVCenter
 
@@ -272,7 +273,7 @@ PanelWindow {
                                         Text {
                                             text: type === "files" ? "FILES" : (type === "image" ? "IMAGE" : "TEXT")
                                             font.bold: true
-                                            color: index === listView.currentIndex ? clipboardWindow.palette.text: clipboardWindow.palette.main
+                                            color: index === listView.currentIndex ? clipboardWindow.palette.text : clipboardWindow.palette.primary
                                             font.pixelSize: 10
                                         }
                                         Text {
@@ -297,7 +298,7 @@ PanelWindow {
                                     width: 32
                                     height: 32
                                     radius: 16
-                                    color: deleteMouse.containsMouse ? clipboardWindow.palette.accent : (index === listView.currentIndex ? clipboardWindow.palette.bg : clipboardWindow.palette.darkerkBg)
+                                    color: deleteMouse.containsMouse ? clipboardWindow.palette.secondary : (index === listView.currentIndex ? clipboardWindow.palette.surface_container : clipboardWindow.palette.surface_container_low)
                                     Layout.alignment: Qt.AlignVCenter
 
                                     Text {
@@ -344,7 +345,7 @@ PanelWindow {
                 Text {
                     text: "Total: " + clipboardModel.count + " / 20"
                     font.pixelSize: 11
-                    color: clipboardWindow.palette.main
+                    color: clipboardWindow.palette.primary
                     font.bold: true
                 }
             }

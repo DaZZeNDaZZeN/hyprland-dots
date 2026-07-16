@@ -63,9 +63,9 @@ Item {
         width: 68
         height: 28
         radius: 14
-        color: soundButtonMouseArea.containsMouse ? volumeControl.palette.secondaryBg : volumeControl.palette.bg
-        border.color: volumePopup.visible ? volumeControl.palette.main : (soundButtonMouseArea.containsMouse ? volumeControl.palette.text : volumeControl.palette.secondaryBg)
-        border.width: volumePopup.visible ? 2.0 : 1.2
+        color: soundButtonMouseArea.containsMouse ? volumeControl.palette.surface_container_low : volumeControl.palette.surface_container
+        border.color: volumePopup.visible ? volumeControl.palette.primary : (soundButtonMouseArea.containsMouse ? volumeControl.palette.text : volumeControl.palette.tertiary)
+        border.width: volumePopup.visible ? 2.0 : 1.0
 
         Behavior on color {
             ColorAnimation {
@@ -92,7 +92,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
 
                 source: {
-                    let strokeColor = volumeControl.isMuted ? encodeURIComponent(volumeControl.palette.accent) : encodeURIComponent(volumeControl.palette.main);
+                    let strokeColor = volumeControl.isMuted ? encodeURIComponent(volumeControl.palette.secondary) : encodeURIComponent(volumeControl.palette.primary);
                     let hoverColor = encodeURIComponent(volumeControl.palette.text);
                     let activeColor = soundButtonMouseArea.containsMouse ? hoverColor : strokeColor;
                     if (volumeControl.isMuted || volumeControl.currentVolume === 0) {
@@ -107,7 +107,7 @@ Item {
 
             Text {
                 text: volumeControl.isMuted ? "MUT" : volumeControl.currentVolume + "%"
-                color: volumeControl.isMuted ? volumeControl.palette.accent : volumeControl.palette.text
+                color: volumeControl.isMuted ? volumeControl.palette.secondary : volumeControl.palette.text
                 font.pixelSize: 11
                 font.bold: true
                 font.family: "Noto Sans"
@@ -161,8 +161,8 @@ Item {
 
         Rectangle {
             anchors.fill: parent
-            color: volumeControl.palette.bg
-            border.color: volumeControl.palette.main
+            color: volumeControl.palette.surface_container
+            border.color: volumeControl.palette.primary
             border.width: 1.5
             radius: 12
 
@@ -187,13 +187,13 @@ Item {
                         x: verticalSlider.leftPadding + verticalSlider.availableWidth / 2 - width / 2
                         y: verticalSlider.topPadding
                         radius: 2.5
-                        color: volumeControl.palette.secondaryBg
+                        color: volumeControl.palette.surface_container_low
 
                         Rectangle {
                             width: parent.width
                             height: (1.0 - verticalSlider.visualPosition) * parent.height
                             y: parent.height - height
-                            color: volumeControl.palette.main
+                            color: volumeControl.palette.primary
                             radius: 2.5
                         }
                     }
@@ -205,7 +205,7 @@ Item {
                         implicitHeight: 14
                         radius: 7
                         color: verticalSlider.pressed ? volumeControl.palette.text : volumeControl.palette.darkerText
-                        border.color: volumeControl.palette.main
+                        border.color: volumeControl.palette.primary
                         border.width: verticalSlider.hovered ? 2 : 0
 
                         Behavior on border.width {
@@ -227,7 +227,7 @@ Item {
 
                 Text {
                     text: volumeControl.isMuted ? "MUTED" : volumeControl.currentVolume + "%"
-                    color: volumeControl.isMuted ? volumeControl.palette.accent : volumeControl.palette.text
+                    color: volumeControl.isMuted ? volumeControl.palette.secondary : volumeControl.palette.text
                     font.pixelSize: 11
                     font.bold: true
                     font.family: "Noto Sans"
