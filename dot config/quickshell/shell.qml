@@ -37,6 +37,20 @@ ShellRoot {
         topPanelHeightWithMargins: panelWindow.heightWithMargin
     }
 
+    // --- Notification Center System Overlay ---
+    NotificationCenter {
+        id: notificationCenter
+        palette: root.palette
+        topPanelHeightWithMargins: panelWindow.heightWithMargin
+    }
+
+    // --- Control Center Widget System Overlay ---
+    ControlCenter {
+        id: controlCenter
+        palette: root.palette
+        topPanelHeightWithMargins: panelWindow.heightWithMargin
+    }
+
     // Listen for SUPER+V global shortcut via Hyprland protocol
     GlobalShortcut {
         name: "clipboard"
@@ -65,8 +79,10 @@ ShellRoot {
         }
         margins {
             top: 5
-            left: 10
-            right: 10
+            left: 40
+            // Widened to leave room for the notification bell button, which
+            // floats just outside the panel's right edge (see NotificationButton below).
+            right: 40
         }
         implicitHeight: 40
         property int heightWithMargin: implicitHeight + margins.top

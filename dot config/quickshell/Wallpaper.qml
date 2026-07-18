@@ -7,7 +7,7 @@ Scope {
     id: wallpaperModule
     property int topPanelHeightWithMargins: 0
 
-    property string wallpaperSource: Qt.resolvedUrl("wallpapers/kanata.jpg")
+    property string wallpaperSource: Qt.resolvedUrl("wallpapers/default.png")
 
     property var palette
 
@@ -50,7 +50,6 @@ Scope {
         } else if (typeof colorObj === 'string') {
             hexVal = colorObj;
         }
-
         if (hexVal && typeof hexVal === 'string') {
             if (!hexVal.startsWith("#")) {
                 hexVal = "#" + hexVal;
@@ -78,6 +77,7 @@ Scope {
         // Map UI text elements appropriately
         wallpaperModule.palette.text = getColor("on_surface", wallpaperModule.palette.text);
         wallpaperModule.palette.darkerText = getColor("on_surface_variant", wallpaperModule.palette.darkerText);
+        wallpaperModule.palette.darkestText = getColor("background", wallpaperModule.palette.darkestText);
 
         // Map container hierarchies
         wallpaperModule.palette.surface = getColor("surface", wallpaperModule.palette.surface);

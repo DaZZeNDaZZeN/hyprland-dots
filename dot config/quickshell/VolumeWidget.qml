@@ -29,17 +29,28 @@ Item {
         }
     }
 
-    Timer {
-        id: volumePoller
-        interval: 2000
-        running: true
-        repeat: true
-        triggeredOnStart: true
-        onTriggered: volumeReader.running = true
+    // Component.onCompleted triggers a query immediately when the bar loads up
+    Component.onCompleted: {
+        volumeQuery.running = true;
     }
 
+    // Listens for active sink events reactively and triggers instant updates
     Process {
-        id: volumeReader
+        id: volumeMonitor
+        command: ["sh", "-c", "pactl subscribe | grep --line-buffered \"'change' on sink\""]
+        running: true
+
+        stdout: SplitParser {
+            splitMarker: "\n"
+            onRead: data => {
+                volumeQuery.running = true;
+            }
+        }
+    }
+
+    // Reusable fast-query helper process to fetch state metrics
+    Process {
+        id: volumeQuery
         command: ["wpctl", "get-volume", "@DEFAULT_AUDIO_SINK@"]
         running: false
 
@@ -127,9 +138,6 @@ Item {
                     Qt.openUrlExternally("file:///usr/bin/pavucontrol");
                 } else if (mouse.button === Qt.LeftButton) {
                     volumePopup.visible = !volumePopup.visible;
-                    if (volumePopup.visible) {
-                        volumeReader.running = true;
-                    }
                 }
             }
 

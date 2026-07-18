@@ -18,7 +18,9 @@ Move window to workspace {n}: SUPER + SHIFT + {n} <br>
 Make window float: SUPER + B <br>
 Make window go fullscreen: SUPER + F <br>
 Make window occupy all space(maximize window): SUPER + G <br>
-Screenshot: SUPER + SHIFT + S <br></p>
+Screenshot: SUPER + SHIFT + S <br>
+Open notifications(right panel): SUPER + N<br>
+Open Control Center(left panel): SUPER + H<br></p>
 
 
 ### required packages for arch linux:

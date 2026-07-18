@@ -8,6 +8,7 @@ QtObject {
     property color tertiary: "#BDC5EB"
     property color text: "#FFFFFF"
     property color darkerText: "#999999"
+    property color darkestText: "#000000"
     property color surface: "#0E1416"
     property color surface_container_lowest: "#090F11"
     property color surface_container_low: "#171D1E"
