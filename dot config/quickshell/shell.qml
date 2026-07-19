@@ -169,7 +169,7 @@ ShellRoot {
             Text {
                 id: datetimeText
                 font.pixelSize: 18
-                color: root.palette.text
+                color: root.palette.on_surface
                 anchors.verticalCenter: parent.verticalCenter
                 text: Qt.formatDateTime(clock.date, "hh:mm:ss | MM.dd.yyyy")
             }
@@ -214,7 +214,7 @@ ShellRoot {
                                         anchors.centerIn: parent
                                         text: modelData
                                         font.pixelSize: 14
-                                        color: root.palette.text
+                                        color: Hyprland.focusedWorkspace.id == parseInt(modelData) ? root.palette.on_primary : root.palette.on_surface
                                     }
                                 }
                                 MouseArea {

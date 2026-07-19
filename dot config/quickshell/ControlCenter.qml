@@ -249,7 +249,7 @@ Item {
                     Layout.fillWidth: true
                     Text {
                         text: "Control Center"
-                        color: controlRoot.palette.text
+                        color: controlRoot.palette.on_surface
                         font.pixelSize: 18
                         font.bold: true
                     }
@@ -267,7 +267,7 @@ Item {
                             anchors.centerIn: parent
                             width: 14
                             height: 14
-                            source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(controlRoot.palette.text) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='6' x2='6' y2='18'></line><line x1='6' y1='6' x2='18' y2='18'></line></svg>"
+                            source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(controlRoot.palette.on_surface) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='6' x2='6' y2='18'></line><line x1='6' y1='6' x2='18' y2='18'></line></svg>"
                         }
                         MouseArea {
                             id: closeMouse
@@ -337,7 +337,7 @@ Item {
                                                 anchors.centerIn: parent
                                                 width: 18
                                                 height: 18
-                                                source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(controlRoot.wifiConnected ? controlRoot.palette.text : controlRoot.palette.darkerText) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01'/></svg>"
+                                                source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(controlRoot.wifiConnected ? controlRoot.palette.on_surface : controlRoot.palette.outline) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01'/></svg>"
                                             }
                                         }
                                         ColumnLayout {
@@ -345,20 +345,20 @@ Item {
                                             spacing: 1
                                             Text {
                                                 text: "Network"
-                                                color: controlRoot.palette.text
+                                                color: controlRoot.palette.on_surface
                                                 font.bold: true
                                                 font.pixelSize: 12
                                             }
                                             Text {
                                                 text: controlRoot.wifiConnected ? "Connected" : "Disabled"
-                                                color: controlRoot.palette.darkerText
+                                                color: controlRoot.palette.outline
                                                 font.pixelSize: 11
                                             }
                                         }
 
                                         Text {
                                             text: controlRoot.netExpanded ? "▲" : "▼"
-                                            color: controlRoot.palette.darkerText
+                                            color: controlRoot.palette.outline
                                             font.pixelSize: 10
                                             Layout.margins: 6
                                         }
@@ -382,7 +382,7 @@ Item {
                                             Layout.fillWidth: true
                                             Text {
                                                 text: "Wi-Fi Toggle"
-                                                color: controlRoot.palette.text
+                                                color: controlRoot.palette.on_surface
                                                 font.pixelSize: 12
                                                 Layout.fillWidth: true
                                             }
@@ -399,7 +399,7 @@ Item {
                                             visible: controlRoot.ethernetConnections.length > 0
                                             Text {
                                                 text: "Ethernet Devices"
-                                                color: controlRoot.palette.darkerText
+                                                color: controlRoot.palette.outline
                                                 font.bold: true
                                                 font.pixelSize: 11
                                             }
@@ -409,7 +409,7 @@ Item {
                                                     Layout.fillWidth: true
                                                     Text {
                                                         text: "󰈀  " + modelData
-                                                        color: controlRoot.palette.text
+                                                        color: controlRoot.palette.on_surface
                                                         font.pixelSize: 12
                                                         Layout.fillWidth: true
                                                     }
@@ -428,14 +428,14 @@ Item {
                                             spacing: 6
                                             Text {
                                                 text: "Available Wi-Fi"
-                                                color: controlRoot.palette.darkerText
+                                                color: controlRoot.palette.outline
                                                 font.bold: true
                                                 font.pixelSize: 11
                                             }
 
                                             Text {
                                                 text: "No networks found or Wi-Fi off."
-                                                color: controlRoot.palette.darkerText
+                                                color: controlRoot.palette.outline
                                                 font.pixelSize: 11
                                                 visible: controlRoot.wifiNetworks.length === 0
                                             }
@@ -453,7 +453,7 @@ Item {
                                                         anchors.margins: 6
                                                         Text {
                                                             text: (modelData.active ? "󰖩  " : "󰖪  ") + modelData.ssid
-                                                            color: modelData.active ? controlRoot.palette.primary : controlRoot.palette.text
+                                                            color: modelData.active ? controlRoot.palette.primary : controlRoot.palette.on_surface
                                                             font.bold: modelData.active
                                                             font.pixelSize: 12
                                                             Layout.fillWidth: true
@@ -461,7 +461,7 @@ Item {
                                                         }
                                                         Text {
                                                             text: modelData.signal + "%"
-                                                            color: controlRoot.palette.darkerText
+                                                            color: controlRoot.palette.outline
                                                             font.pixelSize: 10
                                                         }
 
@@ -471,7 +471,7 @@ Item {
                                                             onClicked: controlRoot.connectToNetwork(modelData.ssid)
                                                             contentItem: Text {
                                                                 text: parent.text
-                                                                color: parent.enabled ? controlRoot.palette.text : controlRoot.palette.darkerText
+                                                                color: parent.enabled ? controlRoot.palette.on_surface : controlRoot.palette.outline
                                                                 font.pixelSize: 10
                                                                 horizontalAlignment: Text.AlignHCenter
                                                                 verticalAlignment: Text.AlignVCenter
@@ -526,7 +526,7 @@ Item {
                                             anchors.centerIn: parent
                                             width: 18
                                             height: 18
-                                            source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(controlRoot.bluetoothActive ? controlRoot.palette.text : controlRoot.palette.darkerText) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m7 7 10 10-5 5V2l5 5L7 17'/></svg>"
+                                            source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(controlRoot.bluetoothActive ? controlRoot.palette.on_surface : controlRoot.palette.outline) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m7 7 10 10-5 5V2l5 5L7 17'/></svg>"
                                         }
                                     }
                                     ColumnLayout {
@@ -534,14 +534,14 @@ Item {
                                         spacing: 1
                                         Text {
                                             text: "Bluetooth"
-                                            color: controlRoot.palette.text
+                                            color: controlRoot.palette.on_surface
                                             font.bold: true
                                             font.pixelSize: 12
                                             elide: Text.ElideRight
                                         }
                                         Text {
                                             text: controlRoot.bluetoothActive ? "Active" : "Disabled"
-                                            color: controlRoot.palette.darkerText
+                                            color: controlRoot.palette.outline
                                             font.pixelSize: 11
                                         }
                                     }
@@ -611,7 +611,7 @@ Item {
                                             }
                                             Text {
                                                 text: modelData.name
-                                                color: controlRoot.palette.text
+                                                color: controlRoot.palette.on_surface
                                                 font.pixelSize: 11
                                                 Layout.alignment: Qt.AlignHCenter
                                             }
@@ -656,15 +656,15 @@ Item {
             height: 32
             radius: 16
             anchors.verticalCenter: parent.verticalCenter
-            color: widgetMouseArea.containsMouse ? controlRoot.palette.surface_container_low : controlRoot.palette.surface_container
-            border.color: sidePanelWindow.isOpen ? controlRoot.palette.primary : (widgetMouseArea.containsMouse ? controlRoot.palette.text : controlRoot.palette.tertiary)
+            color: widgetMouseArea.containsMouse ? controlRoot.palette.surface_container_high : controlRoot.palette.surface_container
+            border.color: sidePanelWindow.isOpen ? controlRoot.palette.primary : (widgetMouseArea.containsMouse ? controlRoot.palette.on_surface : controlRoot.palette.secondary)
             border.width: sidePanelWindow.isOpen ? 1.5 : 1.0
 
             Image {
                 width: 16
                 height: 16
                 anchors.centerIn: parent
-                source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(sidePanelWindow.isOpen ? controlRoot.palette.primary : controlRoot.palette.text) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='7' height='9'></rect><rect x='14' y='3' width='7' height='5'></rect><rect x='14' y='12' width='7' height='9'></rect><rect x='3' y='16' width='7' height='5'></rect></svg>"
+                source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(sidePanelWindow.isOpen ? controlRoot.palette.primary : (widgetMouseArea.containsMouse ? controlRoot.palette.on_surface : controlRoot.palette.secondary)) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='7' height='9'></rect><rect x='14' y='3' width='7' height='5'></rect><rect x='14' y='12' width='7' height='9'></rect><rect x='3' y='16' width='7' height='5'></rect></svg>"
             }
 
             MouseArea {

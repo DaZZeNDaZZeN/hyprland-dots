@@ -131,7 +131,7 @@ PanelWindow {
                     Text {
                         text: "Select an item to copy back to the clipboard"
                         font.pixelSize: 12
-                        color: clipboardWindow.palette.darkerText
+                        color: clipboardWindow.palette.outline
                     }
                 }
 
@@ -140,8 +140,8 @@ PanelWindow {
                     width: 100
                     height: 35
                     radius: 8
-                    color: clearMouse.containsMouse ? clipboardWindow.palette.secondary : clipboardWindow.palette.surface_container_low
-                    border.color: clearMouse.containsMouse ? "transparent" : clipboardWindow.palette.secondary
+                    color: clearMouse.containsMouse ? clipboardWindow.palette.secondary_container : clipboardWindow.palette.surface_container_low
+                    border.color: clearMouse.containsMouse ? "transparent" : clipboardWindow.palette.secondary_container
                     border.width: 1
                     Layout.alignment: Qt.AlignRight
 
@@ -217,7 +217,7 @@ PanelWindow {
                             anchors.fill: parent
                             anchors.margins: 0
                             radius: 10
-                            color: index === listView.currentIndex ? clipboardWindow.palette.surface_container_low : clipboardWindow.palette.surface_container
+                            color: index === listView.currentIndex ? clipboardWindow.palette.surface_container_high : clipboardWindow.palette.surface_container_low
                             border.color: index === listView.currentIndex ? clipboardWindow.palette.primary : "transparent"
                             border.width: 2
 
@@ -273,19 +273,19 @@ PanelWindow {
                                         Text {
                                             text: type === "files" ? "FILES" : (type === "image" ? "IMAGE" : "TEXT")
                                             font.bold: true
-                                            color: index === listView.currentIndex ? clipboardWindow.palette.text : clipboardWindow.palette.primary
+                                            color: index === listView.currentIndex ? clipboardWindow.palette.on_surface : clipboardWindow.palette.primary
                                             font.pixelSize: 10
                                         }
                                         Text {
                                             text: "• " + timestamp
-                                            color: clipboardWindow.palette.darkerText
+                                            color: clipboardWindow.palette.outline
                                             font.pixelSize: 10
                                         }
                                     }
 
                                     Text {
                                         text: preview
-                                        color: clipboardWindow.palette.text
+                                        color: clipboardWindow.palette.on_surface
                                         font.pixelSize: 13
                                         elide: Text.ElideRight
                                         Layout.fillWidth: true
@@ -298,7 +298,7 @@ PanelWindow {
                                     width: 32
                                     height: 32
                                     radius: 16
-                                    color: deleteMouse.containsMouse ? clipboardWindow.palette.secondary : (index === listView.currentIndex ? clipboardWindow.palette.surface_container : clipboardWindow.palette.surface_container_low)
+                                    color: deleteMouse.containsMouse ? clipboardWindow.palette.secondary_container : (index === listView.currentIndex ? clipboardWindow.palette.surface_container : clipboardWindow.palette.surface_container_low)
                                     Layout.alignment: Qt.AlignVCenter
 
                                     Text {
@@ -324,7 +324,7 @@ PanelWindow {
                 Text {
                     anchors.centerIn: parent
                     text: "No history found"
-                    color: clipboardWindow.palette.darkerText
+                    color: clipboardWindow.palette.outline
                     font.pixelSize: 16
                     visible: clipboardModel.count === 0
                 }
@@ -338,7 +338,7 @@ PanelWindow {
                 Text {
                     text: "↑↓ Navigate  •  Enter Copy  •  Esc Close"
                     font.pixelSize: 11
-                    color: clipboardWindow.palette.darkerText
+                    color: clipboardWindow.palette.outline
                     Layout.fillWidth: true
                 }
 

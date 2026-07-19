@@ -37,7 +37,7 @@ brightness: brightnessctl <br>
 multimedia: playerctl <br>
 fonts: noto-fonts <br>
 authentication agent: polkit-kde-agent<br>
-additional packages: python matugen<br></p>
+additional packages: python matugen archlinux-xdg-menu<br></p>
 
 command with everything: 
 <code>sudo pacman -S hyprland alacritty dolphin fuzzel firefox wireplumber brightnessctl playerctl noto-fonts hyprshot hyprpicker polkit-kde-agent python matugen</code><br>

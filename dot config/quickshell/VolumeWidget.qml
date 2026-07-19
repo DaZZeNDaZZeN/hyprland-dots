@@ -75,7 +75,7 @@ Item {
         height: 28
         radius: 14
         color: soundButtonMouseArea.containsMouse ? volumeControl.palette.surface_container_low : volumeControl.palette.surface_container
-        border.color: volumePopup.visible ? volumeControl.palette.primary : (soundButtonMouseArea.containsMouse ? volumeControl.palette.text : volumeControl.palette.tertiary)
+        border.color: volumePopup.visible ? volumeControl.palette.primary : (soundButtonMouseArea.containsMouse ? volumeControl.palette.on_surface : volumeControl.palette.secondary)
         border.width: volumePopup.visible ? 2.0 : 1.0
 
         Behavior on color {
@@ -104,7 +104,7 @@ Item {
 
                 source: {
                     let strokeColor = volumeControl.isMuted ? encodeURIComponent(volumeControl.palette.secondary) : encodeURIComponent(volumeControl.palette.primary);
-                    let hoverColor = encodeURIComponent(volumeControl.palette.text);
+                    let hoverColor = encodeURIComponent(volumeControl.palette.on_surface);
                     let activeColor = soundButtonMouseArea.containsMouse ? hoverColor : strokeColor;
                     if (volumeControl.isMuted || volumeControl.currentVolume === 0) {
                         return "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + strokeColor + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6'/></svg>";
@@ -118,7 +118,7 @@ Item {
 
             Text {
                 text: volumeControl.isMuted ? "MUT" : volumeControl.currentVolume + "%"
-                color: volumeControl.isMuted ? volumeControl.palette.secondary : volumeControl.palette.text
+                color: volumeControl.isMuted ? volumeControl.palette.secondary : volumeControl.palette.on_surface
                 font.pixelSize: 11
                 font.bold: true
                 font.family: "Noto Sans"
@@ -212,7 +212,7 @@ Item {
                         implicitWidth: 14
                         implicitHeight: 14
                         radius: 7
-                        color: verticalSlider.pressed ? volumeControl.palette.text : volumeControl.palette.darkerText
+                        color: verticalSlider.pressed ? volumeControl.palette.on_surface : volumeControl.palette.primary
                         border.color: volumeControl.palette.primary
                         border.width: verticalSlider.hovered ? 2 : 0
 
@@ -235,7 +235,7 @@ Item {
 
                 Text {
                     text: volumeControl.isMuted ? "MUTED" : volumeControl.currentVolume + "%"
-                    color: volumeControl.isMuted ? volumeControl.palette.secondary : volumeControl.palette.text
+                    color: volumeControl.isMuted ? volumeControl.palette.secondary : volumeControl.palette.on_surface
                     font.pixelSize: 11
                     font.bold: true
                     font.family: "Noto Sans"

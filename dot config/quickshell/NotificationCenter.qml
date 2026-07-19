@@ -243,7 +243,7 @@ Item {
 
                                 Text {
                                     text: model.appName
-                                    color: centerRoot.palette.darkerText
+                                    color: centerRoot.palette.outline
                                     font.pixelSize: 11
                                     font.bold: true
                                     Layout.fillWidth: true
@@ -258,14 +258,14 @@ Item {
 
                                     Image {
                                         anchors.fill: parent
-                                        source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(centerRoot.palette.darkerText) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='6' x2='6' y2='18'></line><line x1='6' y1='6' x2='18' y2='18'></line></svg>"
+                                        source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(centerRoot.palette.outline) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='6' x2='6' y2='18'></line><line x1='6' y1='6' x2='18' y2='18'></line></svg>"
                                     }
                                 }
                             }
 
                             Text {
                                 text: model.summary
-                                color: centerRoot.palette.text
+                                color: centerRoot.palette.on_surface
                                 font.pixelSize: 13
                                 font.bold: true
                                 wrapMode: Text.Wrap
@@ -274,7 +274,7 @@ Item {
 
                             Text {
                                 text: model.body
-                                color: centerRoot.palette.darkerText
+                                color: centerRoot.palette.outline
                                 font.pixelSize: 11
                                 wrapMode: Text.Wrap
                                 Layout.fillWidth: true
@@ -415,7 +415,7 @@ Item {
 
                     Text {
                         text: "Notifications"
-                        color: centerRoot.palette.text
+                        color: centerRoot.palette.on_surface
                         font.pixelSize: 18
                         font.bold: true
                     }
@@ -430,7 +430,7 @@ Item {
                         Text {
                             anchors.centerIn: parent
                             text: historyModel.count
-                            color: centerRoot.palette.text
+                            color: centerRoot.palette.on_surface
                             font.pixelSize: 10
                             font.bold: true
                         }
@@ -455,7 +455,7 @@ Item {
                             width: 14
                             height: 14
                             source: {
-                                let strokeColor = centerRoot.dndMode ? encodeURIComponent(centerRoot.palette.secondary) : encodeURIComponent(centerRoot.palette.text);
+                                let strokeColor = centerRoot.dndMode ? encodeURIComponent(centerRoot.palette.secondary) : encodeURIComponent(centerRoot.palette.on_surface);
                                 if (centerRoot.dndMode) {
                                     return "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + strokeColor + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M13.73 21a2 2 0 0 1-3.46 0M18.63 13A17.89 17.89 0 0 1 18 8M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h18M18 8a6 6 0 0 0-9.33-5M1 1l22 22'/></svg>";
                                 } else {
@@ -514,7 +514,7 @@ Item {
                             anchors.centerIn: parent
                             width: 14
                             height: 14
-                            source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(centerRoot.palette.text) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='6' x2='6' y2='18'></line><line x1='6' y1='6' x2='18' y2='18'></line></svg>"
+                            source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(centerRoot.palette.on_surface) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='6' x2='6' y2='18'></line><line x1='6' y1='6' x2='18' y2='18'></line></svg>"
                         }
 
                         MouseArea {
@@ -617,7 +617,7 @@ Item {
 
                                             Text {
                                                 text: model.appName
-                                                color: centerRoot.palette.darkerText
+                                                color: centerRoot.palette.outline
                                                 font.pixelSize: 11
                                                 font.bold: true
                                                 Layout.fillWidth: true
@@ -625,7 +625,7 @@ Item {
 
                                             Text {
                                                 text: model.timestamp
-                                                color: centerRoot.palette.darkerText
+                                                color: centerRoot.palette.outline
                                                 font.pixelSize: 10
                                             }
 
@@ -640,14 +640,14 @@ Item {
 
                                                 Image {
                                                     anchors.fill: parent
-                                                    source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(centerRoot.palette.darkerText) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='6' x2='6' y2='18'></line><line x1='6' y1='6' x2='18' y2='18'></line></svg>"
+                                                    source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(centerRoot.palette.outline) + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><line x1='18' y1='6' x2='6' y2='18'></line><line x1='6' y1='6' x2='18' y2='18'></line></svg>"
                                                 }
                                             }
                                         }
 
                                         Text {
                                             text: model.summary
-                                            color: centerRoot.palette.text
+                                            color: centerRoot.palette.on_surface
                                             font.pixelSize: 13
                                             font.bold: true
                                             wrapMode: Text.Wrap
@@ -656,7 +656,7 @@ Item {
 
                                         Text {
                                             text: model.body
-                                            color: centerRoot.palette.darkerText
+                                            color: centerRoot.palette.outline
                                             font.pixelSize: 11
                                             wrapMode: Text.Wrap
                                             Layout.fillWidth: true
@@ -687,12 +687,12 @@ Item {
                             height: 48
                             sourceSize.width: 48
                             sourceSize.height: 48
-                            source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(centerRoot.palette.darkerText) + "' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0M21 21L3 3'/></svg>"
+                            source: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + encodeURIComponent(centerRoot.palette.outline) + "' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0M21 21L3 3'/></svg>"
                         }
 
                         Text {
                             text: centerRoot.dndMode ? "Notifications Muted" : "All Caught Up!"
-                            color: centerRoot.palette.text
+                            color: centerRoot.palette.on_surface
                             font.pixelSize: 14
                             font.bold: true
                             Layout.alignment: Qt.AlignHCenter
@@ -700,7 +700,7 @@ Item {
 
                         Text {
                             text: centerRoot.dndMode ? "Disable DND to show popups." : "No notifications in history."
-                            color: centerRoot.palette.darkerText
+                            color: centerRoot.palette.outline
                             font.pixelSize: 11
                             Layout.alignment: Qt.AlignHCenter
                         }
@@ -735,7 +735,7 @@ Item {
             radius: 16
             anchors.verticalCenter: parent.verticalCenter
             color: bellMouseArea.containsMouse ? centerRoot.palette.surface_container_low : centerRoot.palette.surface_container
-            border.color: sidePanelWindow.isOpen ? centerRoot.palette.primary : (bellMouseArea.containsMouse ? centerRoot.palette.text : centerRoot.palette.tertiary)
+            border.color: sidePanelWindow.isOpen ? centerRoot.palette.primary : (bellMouseArea.containsMouse ? centerRoot.palette.on_surface : centerRoot.palette.secondary)
             border.width: sidePanelWindow.isOpen ? 1.5 : 1.0
 
             Behavior on color {
@@ -761,7 +761,7 @@ Item {
                 transformOrigin: Item.Center
 
                 source: {
-                    let strokeColor = centerRoot.dndMode ? encodeURIComponent(centerRoot.palette.secondary) : (sidePanelWindow.isOpen ? encodeURIComponent(centerRoot.palette.primary) : (bellMouseArea.containsMouse ? encodeURIComponent(centerRoot.palette.text) : encodeURIComponent(centerRoot.palette.tertiary)));
+                    let strokeColor = centerRoot.dndMode ? encodeURIComponent(centerRoot.palette.error) : (sidePanelWindow.isOpen ? encodeURIComponent(centerRoot.palette.primary) : (bellMouseArea.containsMouse ? encodeURIComponent(centerRoot.palette.on_surface) : encodeURIComponent(centerRoot.palette.secondary)));
                     if (centerRoot.dndMode) {
                         return "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='" + strokeColor + "' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M13.73 21a2 2 0 0 1-3.46 0M18.63 13A17.89 17.89 0 0 1 18 8M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h18M18 8a6 6 0 0 0-9.33-5M1 1l22 22'/></svg>";
                     } else {
@@ -788,7 +788,7 @@ Item {
                 Text {
                     anchors.centerIn: parent
                     text: historyModel.count
-                    color: centerRoot.palette.darkestText
+                    color: centerRoot.palette.on_secondary
                     font.pixelSize: 8
                     font.bold: true
                 }

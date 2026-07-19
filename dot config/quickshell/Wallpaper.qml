@@ -70,22 +70,71 @@ Scope {
         }
 
         wallpaperModule.palette.primary = getColor("primary", wallpaperModule.palette.primary);
+        wallpaperModule.palette.on_primary = getColor("on_primary", wallpaperModule.palette.on_primary);
         wallpaperModule.palette.primary_container = getColor("primary_container", wallpaperModule.palette.primary_container);
+        wallpaperModule.palette.on_primary_container = getColor("on_primary_container", wallpaperModule.palette.on_primary_container);
+        wallpaperModule.palette.inverse_primary = getColor("inverse_primary", wallpaperModule.palette.inverse_primary);
+        wallpaperModule.palette.primary_fixed = getColor("primary_fixed", wallpaperModule.palette.primary_fixed);
+        wallpaperModule.palette.primary_fixed_dim = getColor("primary_fixed_dim", wallpaperModule.palette.primary_fixed_dim);
+        wallpaperModule.palette.on_primary_fixed = getColor("on_primary_fixed", wallpaperModule.palette.on_primary_fixed);
+        wallpaperModule.palette.on_primary_fixed_variant = getColor("on_primary_fixed_variant", wallpaperModule.palette.on_primary_fixed_variant);
         wallpaperModule.palette.secondary = getColor("secondary", wallpaperModule.palette.secondary);
+        wallpaperModule.palette.on_secondary = getColor("on_secondary", wallpaperModule.palette.on_secondary);
+        wallpaperModule.palette.secondary_container = getColor("secondary_container", wallpaperModule.palette.secondary_container);
+        wallpaperModule.palette.on_secondary_container = getColor("on_secondary_container", wallpaperModule.palette.on_secondary_container);
+        wallpaperModule.palette.secondary_fixed = getColor("secondary_fixed", wallpaperModule.palette.secondary_fixed);
+        wallpaperModule.palette.secondary_fixed_dim = getColor("secondary_fixed_dim", wallpaperModule.palette.secondary_fixed_dim);
+        wallpaperModule.palette.on_secondary_fixed = getColor("on_secondary_fixed", wallpaperModule.palette.on_secondary_fixed);
+        wallpaperModule.palette.on_secondary_fixed_variant = getColor("on_secondary_fixed_variant", wallpaperModule.palette.on_secondary_fixed_variant);
         wallpaperModule.palette.tertiary = getColor("tertiary", wallpaperModule.palette.tertiary);
-
-        // Map UI text elements appropriately
-        wallpaperModule.palette.text = getColor("on_surface", wallpaperModule.palette.text);
-        wallpaperModule.palette.darkerText = getColor("on_surface_variant", wallpaperModule.palette.darkerText);
-        wallpaperModule.palette.darkestText = getColor("background", wallpaperModule.palette.darkestText);
-
-        // Map container hierarchies
+        wallpaperModule.palette.on_tertiary = getColor("on_tertiary", wallpaperModule.palette.on_tertiary);
+        wallpaperModule.palette.tertiary_container = getColor("tertiary_container", wallpaperModule.palette.tertiary_container);
+        wallpaperModule.palette.on_tertiary_container = getColor("on_tertiary_container", wallpaperModule.palette.on_tertiary_container);
+        wallpaperModule.palette.tertiary_fixed = getColor("tertiary_fixed", wallpaperModule.palette.tertiary_fixed);
+        wallpaperModule.palette.tertiary_fixed_dim = getColor("tertiary_fixed_dim", wallpaperModule.palette.tertiary_fixed_dim);
+        wallpaperModule.palette.on_tertiary_fixed = getColor("on_tertiary_fixed", wallpaperModule.palette.on_tertiary_fixed);
+        wallpaperModule.palette.on_tertiary_fixed_variant = getColor("on_tertiary_fixed_variant", wallpaperModule.palette.on_tertiary_fixed_variant);
+        wallpaperModule.palette.error = getColor("error", wallpaperModule.palette.error);
+        wallpaperModule.palette.on_error = getColor("on_error", wallpaperModule.palette.on_error);
+        wallpaperModule.palette.error_container = getColor("error_container", wallpaperModule.palette.error_container);
+        wallpaperModule.palette.on_error_container = getColor("on_error_container", wallpaperModule.palette.on_error_container);
+        wallpaperModule.palette.surface_dim = getColor("surface_dim", wallpaperModule.palette.surface_dim);
         wallpaperModule.palette.surface = getColor("surface", wallpaperModule.palette.surface);
+        wallpaperModule.palette.surface_tint = getColor("surface_tint", wallpaperModule.palette.surface_tint);
+        wallpaperModule.palette.surface_bright = getColor("surface_bright", wallpaperModule.palette.surface_bright);
         wallpaperModule.palette.surface_container_lowest = getColor("surface_container_lowest", wallpaperModule.palette.surface_container_lowest);
         wallpaperModule.palette.surface_container_low = getColor("surface_container_low", wallpaperModule.palette.surface_container_low);
         wallpaperModule.palette.surface_container = getColor("surface_container", wallpaperModule.palette.surface_container);
         wallpaperModule.palette.surface_container_high = getColor("surface_container_high", wallpaperModule.palette.surface_container_high);
         wallpaperModule.palette.surface_container_highest = getColor("surface_container_highest", wallpaperModule.palette.surface_container_highest);
+        wallpaperModule.palette.on_surface = getColor("on_surface", wallpaperModule.palette.on_surface);
+        wallpaperModule.palette.on_surface_variant = getColor("on_surface_variant", wallpaperModule.palette.on_surface_variant);
+        wallpaperModule.palette.outline = getColor("outline", wallpaperModule.palette.outline);
+        wallpaperModule.palette.outline_variant = getColor("outline_variant", wallpaperModule.palette.outline_variant);
+        wallpaperModule.palette.inverse_surface = getColor("inverse_surface", wallpaperModule.palette.inverse_surface);
+        wallpaperModule.palette.inverse_on_surface = getColor("inverse_on_surface", wallpaperModule.palette.inverse_on_surface);
+        wallpaperModule.palette.surface_variant = getColor("surface_variant", wallpaperModule.palette.surface_variant);
+        wallpaperModule.palette.background = getColor("background", wallpaperModule.palette.background);
+        wallpaperModule.palette.on_background = getColor("on_background", wallpaperModule.palette.on_background);
+        wallpaperModule.palette.shadow = getColor("shadow", wallpaperModule.palette.shadow);
+        wallpaperModule.palette.scrim = getColor("scrim", wallpaperModule.palette.scrim);
+        wallpaperModule.palette.base00 = getColor("base00", wallpaperModule.palette.base00);
+        wallpaperModule.palette.base05 = getColor("base05", wallpaperModule.palette.base05);
+        wallpaperModule.palette.base01 = getColor("base01", wallpaperModule.palette.base01);
+        wallpaperModule.palette.base02 = getColor("base02", wallpaperModule.palette.base02);
+        wallpaperModule.palette.base03 = getColor("base03", wallpaperModule.palette.base03);
+        wallpaperModule.palette.base04 = getColor("base04", wallpaperModule.palette.base04);
+        wallpaperModule.palette.base06 = getColor("base06", wallpaperModule.palette.base06);
+        wallpaperModule.palette.base07 = getColor("base07", wallpaperModule.palette.base07);
+        wallpaperModule.palette.base08 = getColor("base08", wallpaperModule.palette.base08);
+        wallpaperModule.palette.base09 = getColor("base09", wallpaperModule.palette.base09);
+        wallpaperModule.palette.base0a = getColor("base0a", wallpaperModule.palette.base0a);
+        wallpaperModule.palette.base0b = getColor("base0b", wallpaperModule.palette.base0b);
+        wallpaperModule.palette.base0c = getColor("base0c", wallpaperModule.palette.base0c);
+        wallpaperModule.palette.base0d = getColor("base0d", wallpaperModule.palette.base0d);
+        wallpaperModule.palette.base0e = getColor("base0e", wallpaperModule.palette.base0e);
+        wallpaperModule.palette.base0f = getColor("base0f", wallpaperModule.palette.base0f);
+        wallpaperModule.palette.source_color = getColor("source_color", wallpaperModule.palette.source_color);
     }
 
     // Call Matugen non-blockingly using --dry-run so it outputs only JSON stdout
@@ -95,7 +144,7 @@ Scope {
             return;
 
         matugenProcess.running = false;
-        matugenProcess.command = ["matugen", "image", cleanPath, "--dry-run", "--json", "hex", "--prefer", "value"];
+        matugenProcess.command = ["matugen", "image", cleanPath, "--dry-run", "--json", "hex", "--prefer", "value", "--type", "scheme-content"];
         matugenProcess.running = true;
     }
 

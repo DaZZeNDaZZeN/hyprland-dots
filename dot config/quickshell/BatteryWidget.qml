@@ -68,7 +68,7 @@ Row {
         Rectangle {
             id: batteryOuter
             width: 28; height: 16; color: "transparent"
-            border.color: batteryWidget.palette.text; border.width: 1.5; radius: 3
+            border.color: batteryWidget.palette.on_surface; border.width: 1.5; radius: 3
             anchors.left: parent.left; anchors.verticalCenter: parent.verticalCenter
 
             Rectangle {
@@ -85,7 +85,7 @@ Row {
         }
 
         Rectangle {
-            width: 2; height: 6; color: batteryWidget.palette.text; radius: 1
+            width: 2; height: 6; color: batteryWidget.palette.on_surface; radius: 1
             anchors.left: batteryOuter.right; anchors.leftMargin: 1; anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -101,7 +101,7 @@ Row {
 
     Text {
         text: batteryWidget.capacity + "%"
-        font.pixelSize: 13; font.bold: true; color: batteryWidget.palette.text
+        font.pixelSize: 13; font.bold: true; color: batteryWidget.palette.on_surface
         anchors.verticalCenter: parent.verticalCenter
     }
 }
