@@ -20,10 +20,8 @@ ShellRoot {
 
     property real bgBorderWidth: 3.0
 
-    SystemClock {
-        id: clock
-        precision: SystemClock.Seconds
-    }
+    // State for Caps Lock detection
+    property bool capsLockEnabled: false
 
     Wallpaper {
         topPanelHeightWithMargins: panelWindow.heightWithMargin
@@ -62,9 +60,40 @@ ShellRoot {
     // Start background watcher daemon on launch
     Process {
         id: clipboardWatcher
-        command: ["wl-paste", "--watch", "python3", Quickshell.shellPath("clip_daemon.py"), "record"]
+        command: ["sh", "-c", "wl-paste --watch python3 -u " + Quickshell.shellPath("clip_daemon.py") + " record"]
         running: true
     }
+
+    // --- Caps Lock State Watcher (Single Permanent PID) ---
+    Process {
+        id: capsLockWatcher
+        command: [
+            "python3", "-u", "-c",
+            "import time, glob\n" +
+            "last = ''\n" +
+            "while True:\n" +
+            "    curr = 'OFF'\n" +
+            "    for path in glob.glob('/sys/class/leds/*capslock*/brightness'):\n" +
+            "        try:\n" +
+            "            with open(path) as f:\n" +
+            "                if f.read().strip() == '1':\n" +
+            "                    curr = 'ON'\n" +
+            "                    break\n" +
+            "        except Exception:\n" +
+            "            pass\n" +
+            "    if curr != last:\n" +
+            "        print(curr, flush=True)\n" +
+            "        last = curr\n" +
+            "    time.sleep(0.5)\n"
+        ]
+        running: true
+        stdout: SplitParser {
+            onRead: data => {
+                root.capsLockEnabled = (data.trim() === "ON");
+            }
+        }
+    }
+    
 
     PanelWindow {
         id: panelWindow
@@ -80,8 +109,6 @@ ShellRoot {
         margins {
             top: 5
             left: 40
-            // Widened to leave room for the notification bell button, which
-            // floats just outside the panel's right edge (see NotificationButton below).
             right: 40
         }
         implicitHeight: 40
@@ -166,12 +193,9 @@ ShellRoot {
             spacing: 20
             anchors.centerIn: parent
 
-            Text {
-                id: datetimeText
-                font.pixelSize: 18
-                color: root.palette.on_surface
-                anchors.verticalCenter: parent.verticalCenter
-                text: Qt.formatDateTime(clock.date, "hh:mm:ss | MM.dd.yyyy")
+            TimeWidget {
+                palette: root.palette
+                topPanelHeightWithMargins: topPanelHeightWithMargins
             }
 
             Row {
@@ -246,6 +270,29 @@ ShellRoot {
                 id: sysTray
                 spacing: 8
                 anchors.verticalCenter: parent.verticalCenter
+
+                // --- Caps Lock Indicator ---
+                Item {
+                    id: capsLockIcon
+                    width: visible ? 24 : 0
+                    height: 24
+                    visible: root.capsLockEnabled
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: 12
+                        color: root.palette.primary
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "󰬈" // Caps Lock Nerd Font Glyph (falls back cleanly to "A" if font lacks glyph)
+                            font.pixelSize: 13
+                            font.bold: true
+                            color: root.palette.on_primary
+                        }
+                    }
+                }
 
                 Repeater {
                     model: SystemTray.items
