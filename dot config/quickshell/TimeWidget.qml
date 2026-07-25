@@ -1,4 +1,3 @@
-/* STREAMING_CHUNK:Importing required QtQuick and Quickshell modules... */
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -6,7 +5,6 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Io
 
-/* STREAMING_CHUNK:Defining TimeWidget component properties and state... */
 Item {
     id: widgetRoot
 
@@ -32,7 +30,6 @@ Item {
 
     readonly property var weekDays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 
-    /* STREAMING_CHUNK:Configuring top bar date/time button UI... */
     Rectangle {
         id: buttonBg
         anchors.fill: parent
@@ -72,7 +69,6 @@ Item {
         }
     }
 
-    /* STREAMING_CHUNK:Creating calendar popup window surface... */
     PanelWindow {
         id: calendarPopup
         visible: false
@@ -95,13 +91,11 @@ Item {
         implicitWidth: 360
         implicitHeight: 420
 
-        /* STREAMING_CHUNK:Handling backdrop click outside to dismiss popup... */
         MouseArea {
             anchors.fill: parent
             onClicked: calendarPopup.visible = false
         }
 
-        /* STREAMING_CHUNK:Designing popup background and mouse wheel scroll handler... */
         Rectangle {
             width: 360
             height: 420
@@ -134,7 +128,6 @@ Item {
                     anchors.margins: 16
                     spacing: 12
 
-                    /* STREAMING_CHUNK:Designing calendar header with navigation buttons... */
                     RowLayout {
                         Layout.fillWidth: true
                         spacing: 6
@@ -252,7 +245,6 @@ Item {
                         }
                     }
 
-                    /* STREAMING_CHUNK:Rendering weekday column headers... */
                     RowLayout {
                         Layout.fillWidth: true
                         spacing: 4
@@ -279,7 +271,6 @@ Item {
                         color: widgetRoot.palette.outline_variant
                     }
 
-                    /* STREAMING_CHUNK:Building interactive calendar grid... */
                     GridLayout {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
@@ -326,7 +317,6 @@ Item {
                         }
                     }
 
-                    /* STREAMING_CHUNK:Adding quick action footer bar... */
                     Rectangle {
                         Layout.fillWidth: true
                         height: 36
@@ -378,7 +368,6 @@ Item {
         }
     }
 
-    /* STREAMING_CHUNK:Implementing calendar navigation logic and date calculator... */
     function getDayDetails(index) {
         var today = new Date();
         var firstDay = new Date(viewYear, viewMonth, 1);
