@@ -42,4 +42,4 @@ additional packages: python matugen archlinux-xdg-menu<br></p>
 command with everything: 
 <code>sudo pacman -S hyprland alacritty dolphin fuzzel firefox wireplumber brightnessctl playerctl noto-fonts hyprshot hyprpicker polkit-kde-agent python matugen</code><br>
 
-also i use qt6ct-kde from AUR so my kde plasma desktop doesn't look horrible with hyprland installed
+also i use qt6ct-kde from AUR so my kde plasma desktop doesn't look horrible with hyprland installed, and i use easyeffects so disable it in autostart if you don't need it

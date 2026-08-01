@@ -20,3 +20,7 @@ end)
 hl.on("hyprland.start", function()
 	hl.exec_cmd("/usr/lib/libexec/polkit-kde-authentication-agent-1")
 end)
+
+hl.on("hyprland.start", function()
+	hl.exec_cmd("easyeffects -w")
+end)
