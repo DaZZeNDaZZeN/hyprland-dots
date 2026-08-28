@@ -1,6 +1,6 @@
 # hyprland-dots
 
-i vibe coded most of quickshell config, hyprland config were written by myself
+i vibe coded most of quickshell config, hyprland config were written by myself, noctalia folder contains settings for hyprland to be in use with noctalia shell
 
 ### keybindings:
 <p>
