@@ -32,5 +32,8 @@ shell: noctalia <br>
 terminal: alacritty <br>
 file manager: dolphin <br>
 browser: firefox <br>
-qt6 styling: qt6ct-kde (from aur) <br></p>
+qt6 styling: qt6ct-kde (from aur) <br>
+<br>
+<br>
+Cursor pack directory should be located in ~/.local/share/icons/</p>
 
