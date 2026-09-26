@@ -9,6 +9,8 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_MENU_PREFIX", "arch-")
+hl.env("HYPRCURSOR_THEME", "Nordzy-hyprcursors")
+hl.env("HYPRCURSOR_SIZE", "24")
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -23,7 +25,16 @@ hl.config({
 		border_size = 2,
 
 		col = {
-			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
+			-- active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)", "rgba(33ccffee)" }, angle = 45 },
+			active_border = {
+				colors = {
+					"rgba(33ccffee)",
+					"rgba(00ff99ee)",
+					"rgba(00ff99ee)",
+					"rgba(33ccffee)",
+				},
+				angle = 45,
+			},
 			inactive_border = "rgba(595959aa)",
 		},
 
@@ -88,8 +99,8 @@ hl.animation({ leaf = "layersOut", enabled = true, speed = 1.5, bezier = "linear
 hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
 hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "workspacesIn", enabled = true, speed = 2.0, bezier = "easeInOutCubic", style = "slidefade" })
+hl.animation({ leaf = "workspacesOut", enabled = true, speed = 2.0, bezier = "easeInOutCubic", style = "slidefade" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
@@ -189,5 +200,12 @@ hl.window_rule({
 	match = { class = "hyprland-run" },
 
 	move = "20 monitor_h-120",
+	float = true,
+})
+
+hl.window_rule({
+	name = "firefox pip float",
+	match = { class = "^(firefox)$", title = "^(Picture-in-Picture)$" },
+
 	float = true,
 })

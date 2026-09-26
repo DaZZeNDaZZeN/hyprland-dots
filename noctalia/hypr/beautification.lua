@@ -202,3 +202,10 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+
+hl.window_rule({
+	name = "firefox pip float",
+	match = { class = "^(firefox)$", title = "^(Picture-in-Picture)$" },
+
+	float = true,
+})
