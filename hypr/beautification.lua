@@ -9,7 +9,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_MENU_PREFIX", "arch-")
-hl.env("HYPRCURSOR_THEME", "Nordzy-hyprcursors")
+hl.env("HYPRCURSOR_THEME", "Nordzy-hyprcursors") -- cursor theme must be located at ~/.local/share/icons/
 hl.env("HYPRCURSOR_SIZE", "24")
 
 -----------------------
@@ -25,7 +25,6 @@ hl.config({
 		border_size = 2,
 
 		col = {
-			-- active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)", "rgba(33ccffee)" }, angle = 45 },
 			active_border = {
 				colors = {
 					"rgba(33ccffee)",
