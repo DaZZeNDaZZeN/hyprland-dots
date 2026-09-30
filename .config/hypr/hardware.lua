@@ -12,7 +12,7 @@ hl.monitor({
 
 hl.monitor({
 	output = "DP-1",
-	mode = "1920x1080@143.98Hz",
+	mode = "1920x1080@100.00Hz",
 	position = "auto",
 	scale = "1.0",
 })
@@ -23,7 +23,7 @@ hl.monitor({
 
 hl.config({
 	input = {
-		kb_layout = "us, ru",
+		kb_layout = "us, ru, kz",
 		kb_variant = "",
 		kb_model = "",
 		kb_options = kb_layout_change_keybind,
@@ -43,6 +43,20 @@ hl.gesture({
 	fingers = 3,
 	direction = "horizontal",
 	action = "workspace",
+})
+
+hl.gesture({
+	fingers = 3,
+	mods = "SUPER",
+	direction = "swipe",
+	action = "move",
+})
+
+hl.gesture({
+	fingers = 4,
+	mods = "SUPER",
+	direction = "swipe",
+	action = "resize",
 })
 
 -- Example per-device config
